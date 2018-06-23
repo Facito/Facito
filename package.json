@@ -1,0 +1,19 @@
+{
+  "name": "facito",
+  "version": "0.0.1",
+  "description": "Facito vue implementation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Facito/Facito.git"
+  },
+  "author": "mitsukomegumi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Facito/Facito/issues"
+  },
+  "homepage": "https://gitlab.com/Facito/Facito#README"
+}
