@@ -7,7 +7,7 @@ $('#hide').click(function() {
 });
 
 $('#show').click(function() {
-    $('#content').show();
     $('#show').hide();
+    $('#content').slideDown(200);
     $('#hide').show();
 });

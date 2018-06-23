@@ -193,12 +193,18 @@ body {
 #name {
     text-align: center;
 }
+
 #username {
     text-align: center;
 }
 
 #content {
+    z-index: 100;
     display: none;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background: white;
 }
 
 #hide {
