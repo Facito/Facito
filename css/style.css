@@ -1,0 +1,147 @@
+body{
+    margin-top: 200px;
+    background: white;
+}
+
+.page{
+    padding-left: 5px;
+    padding-right: 5px;
+   
+}
+
+#float{
+    margin-top: -50px;
+    position: relative;
+}
+
+#profile{
+    align-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8%;
+    border-radius: 100%;
+    border-style: solid;
+    animation:fadeSlideU 1s;
+    /* border: linear-gradient(270deg, #FF007D -42.52%, #7D58FF 140.65%); */
+}
+
+
+.ad-left {
+    float: left;
+    text-align: center;
+    padding-left: 48%;
+    font-family: open sans;
+    font-size: 16px;
+    font-weight: bold;
+
+  }
+  
+  .ad-right {
+    float: right;
+    text-align: center;
+    margin-left: auto;
+    padding-right: 300px;
+    font-size: 16px;
+    font-weight: italic;
+  }
+  
+  .entire-thing {
+    width: 850px;
+  }
+
+  #heading{
+    text-align: center;
+    padding: none;
+}
+
+.header{
+    border-bottom: 1px solid grey;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: Helvetica CE Bold, sans-serif;
+    font-size: 75px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    animation:fadeSlideU 1s;   
+}
+#div{
+    width: 100%;
+    display: block;
+    height: 1px;
+    border-top: 1px solid #000;
+    
+}
+
+.imagepadding{
+    padding-left: 15px;
+    padding-right: 15px;
+    animation:fadeSlideU 1s;
+}
+
+.images{
+    width: 100%;
+    display: block;
+    height: 239px;
+    background: grey;
+    clip-path: polygon(0 14px, 100% 0, 100% 95%, 0 100%);
+}
+
+#text{
+    text-align: justify;
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: open sans;
+    font-weight: lighter;
+    animation:fadeSlideU 2s;
+}
+
+.article{
+    width: 100%;
+    display: block;
+    height: 400px;
+    background: url(https://www.billboard.com/files/media/kanye-west-2015-a-billboard-1548.jpg);
+    clip-path: polygon(0 12px, 100% 0, 100% 97%, 0 100%);
+    
+}
+
+.story{
+    list-style: none;
+}
+
+
+
+.profile{
+    width: 10px;
+}
+.buttonstyle{
+    margin: center;
+    padding-left: 350px;
+    padding
+
+
+
+}
+
+#name{
+    text-align: center;
+}
+#username{
+    text-align: center;
+}
+
+
+/*@keyframes fadeSlideU{
+    0%{
+        transform:translateY(100%);
+        opacity:0
+    }
+    to{
+        transform:translateY(0);
+        opacity:1
+    }
+}
