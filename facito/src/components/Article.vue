@@ -3,12 +3,12 @@
         <div class="articlehead">
             <h1 class="header">{{title}}</h1>
             <div class="buttoncontainer">
-                <input type="button" id="show" class="button" value="Show">
+                <button id="show" value="Show" class="button" v-on:click="show">Show</button>
             </div>
         </div>
-        <div id="content">
+        <div class="content">
             <div class="heading">
-                <h1 class="articleheader">{{title}}</h1>
+                <h1>{{title}}</h1>
             </div>
 
             <div class="articlebody">
@@ -18,13 +18,16 @@
                     </p>
                 </div>
                 <div class="bodyimagecontainer">
-                    <div class="bodyimages"></div>
+                    <img class="bodyimages" src=imageLink>
                 </div>
-                <input type="button" id="hide" class="button" value="Hide" style="margin-top: 0.5%; margin-left: 1%;">
+                <button id="hide" value="Hide" class="button" v-on:click="hide" style="margin-top: 0.5%; margin-left: 1%;">Hide</button>
             </div>
         </div>
     </div>
 </template>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <script>
     export default {
@@ -32,25 +35,36 @@
         props: {
             title: String,
             author: String,
+            imagelink: String,
             bodytext: String
+        }, methods: {
+            show: function(event) {
+                if (event) {
+                    var hide = document.getElementById('hide');
+
+                    var content = document.getElementsByClassName('content');
+
+                    event.target.style.display = 'none';
+                    content[0].style.display = 'block';
+                    hide.style.display = 'block';
+                }
+            }, hide: function(event) {
+                if (event) {
+                    var show = document.getElementById('show');
+
+                    var content = document.getElementsByClassName('content');
+
+                    content[0].style.display = 'none';
+                    event.target.style.display = 'none';
+                    show.style.display = 'inline-block';
+                }
+            }
         }
     }
 </script>
 
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h3 {
-        margin: 40px 0 0;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-    a {
-        color: #42b983;
-    }
+    @import "../assets/css/style.css";
 </style>
