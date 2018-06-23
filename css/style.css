@@ -1,20 +1,20 @@
-body{
+body {
     margin-top: 200px;
     background: white;
 }
 
-.page{
+.page {
     padding-left: 5px;
     padding-right: 5px;
    
 }
 
-#float{
+#float {
     margin-top: -50px;
     position: relative;
 }
 
-#profile{
+#profile {
     align-content: center;
     display: block;
     margin-left: auto;
@@ -26,7 +26,6 @@ body{
     /* border: linear-gradient(270deg, #FF007D -42.52%, #7D58FF 140.65%); */
 }
 
-
 .ad-left {
     float: left;
     text-align: center;
@@ -34,29 +33,27 @@ body{
     font-family: open sans;
     font-size: 16px;
     font-weight: bold;
-
-  }
+}
   
-  .ad-right {
+.ad-right {
     float: right;
     text-align: center;
     margin-left: auto;
     padding-right: 300px;
     font-size: 16px;
     font-weight: italic;
-  }
+} 
   
-  .entire-thing {
+.entire-thing {
     width: 850px;
-  }
+}
 
-  #heading{
+#heading {
     text-align: center;
     padding: none;
 }
 
-.header{
-    border-bottom: 1px solid grey;
+.header {
     text-align: center;
     color: rgb(0, 0, 0);
     font-family: Helvetica CE Bold, sans-serif;
@@ -68,21 +65,21 @@ body{
     padding-right: 20px;
     animation:fadeSlideU 1s;   
 }
-#div{
+
+#div {
     width: 100%;
     display: block;
     height: 1px;
-    border-top: 1px solid #000;
-    
+    border-top: 1px solid #000;    
 }
 
-.imagepadding{
+.imagepadding {
     padding-left: 15px;
     padding-right: 15px;
     animation:fadeSlideU 1s;
 }
 
-.images{
+.images {
     width: 100%;
     display: block;
     height: 239px;
@@ -90,7 +87,7 @@ body{
     clip-path: polygon(0 14px, 100% 0, 100% 95%, 0 100%);
 }
 
-#text{
+#text {
     text-align: justify;
     font-size: 30px;
     padding-left: 10px;
@@ -100,7 +97,7 @@ body{
     animation:fadeSlideU 2s;
 }
 
-.article{
+.article {
     width: 100%;
     display: block;
     height: 400px;
@@ -109,39 +106,34 @@ body{
     
 }
 
-.story{
+.story {
     list-style: none;
 }
 
-
-
-.profile{
+.profile {
     width: 10px;
 }
-.buttonstyle{
+
+.buttonstyle {
     margin: center;
     padding-left: 350px;
-    padding
-
-
-
 }
 
-#name{
-    text-align: center;
-}
-#username{
+#name {
     text-align: center;
 }
 
+#username {
+    text-align: center;
+}
 
-/*@keyframes fadeSlideU{
-    0%{
-        transform:translateY(100%);
-        opacity:0
+/*@keyframes fadeSlideU {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
     }
-    to{
-        transform:translateY(0);
-        opacity:1
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

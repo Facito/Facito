@@ -1,14 +1,13 @@
-body{
+body {
     margin-top: 200px;
 }
 
-.page{
+.page {
     padding-left: 10px;
     padding-right: 10px;
-    
-   
 }
-.article{
+
+.article {
     width: 100%;
     display: block;
     height: 400px;
@@ -18,11 +17,11 @@ body{
     
 }
 
-.story{
+.story {
     list-style: none;
 }
 
-.header1{
+.header1 {
     text-align: center;
     color: #fff;
     font-family: Helvetica CE Bold, sans-serif;
@@ -33,15 +32,16 @@ body{
     animation:fadeSlideU 1s;  
 }
 
-.profile{
+.profile {
     width: 10px;
 }
-.buttonstyle{
+
+.buttonstyle {
     margin: center;
     padding-left: 350px;
 }
 
-#show{
+.button {
     vertical-align: text-top;
     text-align: center;
     position: absolute;
@@ -63,27 +63,27 @@ body{
     
     color: #F2F2F2;
     margin:4px 2px; 
-    animation:fadeSlideU 1s;
+    animation: fadeSlideU 1s;
     
 }
 
-body{
+body {
     margin-top: 200px;
     background: white;
 }
 
-.page{
+.page {
     padding-left: 5px;
     padding-right: 5px;
    
 }
 
-#float{
+#float {
     margin-top: -50px;
     position: relative;
 }
 
-#profile{
+#profile {
     align-content: center;
     display: block;
     margin-left: auto;
@@ -95,7 +95,6 @@ body{
     /* border: linear-gradient(270deg, #FF007D -42.52%, #7D58FF 140.65%); */
 }
 
-
 .ad-left {
     float: left;
     text-align: center;
@@ -104,28 +103,27 @@ body{
     font-size: 16px;
     font-weight: bold;
 
-  }
+}
   
-  .ad-right {
+.ad-right {
     float: right;
     text-align: center;
     margin-left: auto;
     padding-right: 300px;
     font-size: 16px;
     font-weight: italic;
-  }
+}
   
-  .entire-thing {
+.entire-thing {
     width: 850px;
-  }
+}
 
-  #heading{
+#heading {
     text-align: center;
     padding: none;
 }
 
-.header{
-    border-bottom: 1px solid grey;
+.header {
     text-align: center;
     color: rgb(0, 0, 0);
     font-family: Helvetica CE Bold, sans-serif;
@@ -137,7 +135,8 @@ body{
     padding-right: 20px;
     animation: fadein 2s;   
 }
-#div{
+
+#div {
     width: 100%;
     display: block;
     height: 1px;
@@ -145,13 +144,13 @@ body{
     
 }
 
-.imagepadding{
+.imagepadding {
     padding-left: 15px;
     padding-right: 15px;
     animation: fadein 2s;
 }
 
-.images{
+.images {
     width: 100%;
     display: block;
     height: 320px;
@@ -159,7 +158,7 @@ body{
     clip-path: polygon(0 14px, 100% 0, 100% 95%, 0 100%);
 }
 
-#text{
+#text {
     text-align: justify;
     font-size: 14px;
     padding-left: 20px;
@@ -169,54 +168,57 @@ body{
     animation: fadein 1s;
 }
 
-.article{
+.article {
     width: 100%;
     display: block;
     height: 400px;
     background: url(https://www.billboard.com/files/media/kanye-west-2015-a-billboard-1548.jpg);
-    clip-path: polygon(0 12px, 100% 0, 100% 97%, 0 100%);
-    
+    clip-path: polygon(0 12px, 100% 0, 100% 97%, 0 100%);    
 }
 
-.story{
+.story {
     list-style: none;
 }
 
-div
-
-.profile{
+.profile {
     width: 10px;
     animation: fadein 2s;
 }
-.buttonstyle{
+
+.buttonstyle {
     margin: center;
     padding-left: 350px;
 }
 
-#name{
-    text-align: center;
-}
-#username{
+#name {
     text-align: center;
 }
 
-#content{
+#username {
+    text-align: center;
+}
+
+#content {
+    z-index: 100;
+    display: none;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background: white;
+}
+
+#hide {
     display: none;
 }
 
-#hide
-{
-    display:none;
-}
-
-@keyframes fadeSlideU{
-    0%{
-        transform:translateY(100%);
-        opacity:0
+@keyframes fadeSlideU {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
     }
-    to{
-        transform:translateY(0);
-        opacity:1
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -225,13 +227,13 @@ div
     to   { opacity: 1; }
 }
 
-@keyframes fadeSlideU{
-    0%{
-        transform:translateY(100%);
-        opacity:0
+@keyframes fadeSlideU {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
     }
-    to{
-        transform:translateY(0);
-        opacity:1
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
