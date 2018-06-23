@@ -1,0 +1,237 @@
+body{
+    margin-top: 200px;
+}
+
+.page{
+    padding-left: 10px;
+    padding-right: 10px;
+    
+   
+}
+.article{
+    width: 100%;
+    display: block;
+    height: 400px;
+    background: url(https://www.billboard.com/files/media/kanye-west-2015-a-billboard-1548.jpg);
+    clip-path: polygon(0 12px, 100% 0, 100% 97%, 0 100%);
+    animation:fadeSlideU 1s;
+    
+}
+
+.story{
+    list-style: none;
+}
+
+.header1{
+    text-align: center;
+    color: #fff;
+    font-family: Helvetica CE Bold, sans-serif;
+    font-size: 75px;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    animation:fadeSlideU 1s;  
+}
+
+.profile{
+    width: 10px;
+}
+.buttonstyle{
+    margin: center;
+    padding-left: 350px;
+}
+
+#show{
+    vertical-align: text-top;
+    text-align: center;
+    position: absolute;
+    height: 60px;
+    width: 250px;
+    padding-bottom: 40px;  
+    background: linear-gradient(270deg, #FF007D -42.52%, #7D58FF 140.65%);
+    border-radius: 70px;
+    color:white;
+    padding: 0px;
+    text-decoration: none;
+    display:inline-block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 26px;
+    border: none;
+    
+    color: #F2F2F2;
+    margin:4px 2px; 
+    animation:fadeSlideU 1s;
+    
+}
+
+body{
+    margin-top: 200px;
+    background: white;
+}
+
+.page{
+    padding-left: 5px;
+    padding-right: 5px;
+   
+}
+
+#float{
+    margin-top: -50px;
+    position: relative;
+}
+
+#profile{
+    align-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8%;
+    border-radius: 100%;
+    border-style: solid;
+    animation: fadein 2s;   
+    /* border: linear-gradient(270deg, #FF007D -42.52%, #7D58FF 140.65%); */
+}
+
+
+.ad-left {
+    float: left;
+    text-align: center;
+    padding-left: 48%;
+    font-family: open sans;
+    font-size: 16px;
+    font-weight: bold;
+
+  }
+  
+  .ad-right {
+    float: right;
+    text-align: center;
+    margin-left: auto;
+    padding-right: 300px;
+    font-size: 16px;
+    font-weight: italic;
+  }
+  
+  .entire-thing {
+    width: 850px;
+  }
+
+  #heading{
+    text-align: center;
+    padding: none;
+}
+
+.header{
+    border-bottom: 1px solid grey;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: Helvetica CE Bold, sans-serif;
+    font-size: 90px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    animation: fadein 2s;   
+}
+#div{
+    width: 100%;
+    display: block;
+    height: 1px;
+    border-top: 1px solid #000;
+    
+}
+
+.imagepadding{
+    padding-left: 15px;
+    padding-right: 15px;
+    animation: fadein 2s;
+}
+
+.images{
+    width: 100%;
+    display: block;
+    height: 320px;
+    background: grey;
+    clip-path: polygon(0 14px, 100% 0, 100% 95%, 0 100%);
+}
+
+#text{
+    text-align: justify;
+    font-size: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: open sans;
+    font-weight: lighter;
+    animation: fadein 1s;
+}
+
+.article{
+    width: 100%;
+    display: block;
+    height: 400px;
+    background: url(https://www.billboard.com/files/media/kanye-west-2015-a-billboard-1548.jpg);
+    clip-path: polygon(0 12px, 100% 0, 100% 97%, 0 100%);
+    
+}
+
+.story{
+    list-style: none;
+}
+
+div
+
+.profile{
+    width: 10px;
+    animation: fadein 2s;
+}
+.buttonstyle{
+    margin: center;
+    padding-left: 350px;
+}
+
+#name{
+    text-align: center;
+}
+#username{
+    text-align: center;
+}
+
+#content{
+    display: none;
+}
+
+#hide
+{
+    display:none;
+}
+
+@keyframes fadeSlideU{
+    0%{
+        transform:translateY(100%);
+        opacity:0
+    }
+    to{
+        transform:translateY(0);
+        opacity:1
+    }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeSlideU{
+    0%{
+        transform:translateY(100%);
+        opacity:0
+    }
+    to{
+        transform:translateY(0);
+        opacity:1
+    }
+}
