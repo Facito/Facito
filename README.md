@@ -7,6 +7,8 @@ Vue.js implementation of Facito.
 To run Facito, clone the Facito repo, and run 
 
 ```bash
+cd facito
+cd facito
 npm install
 npm run serve
 ```
