@@ -1,6 +1,6 @@
 <template>
     <div class="article">
-        <div class="articlehead">
+        <div class="articlehead" :style="{'background-image': getlink()}">
             <h1 class="header">{{title}}</h1>
             <div class="buttoncontainer">
                 <button id="show" value="Show" class="button" v-on:click="show">Show</button>
@@ -19,9 +19,7 @@
                     <p>
                         {{bodytext}}
                     </p>
-                </div>
-                <div class="bodybuttoncontainer">
-                    <button id="hide" value="Hide" class="button" v-on:click="hide" style="margin-top: 0.5%; margin-left: 1%;">Hide</button>
+                    <button id="hide" value="Hide" class="button" v-on:click="hide" style="margin-top: 0.5%;">Hide</button>
                 </div>
             </div>
         </div>
@@ -38,46 +36,31 @@
             title: String,
             author: String,
             imagelink: String,
+            headerlink: String,
             bodytext: String
         }, methods: {
             show: function(event) {
                 if (event) {
-                    var buttons = document.getElementsByClassName('button');
+                    var parentDiv = event.target.parentNode.parentNode.parentNode;
 
-                    var content = document.getElementsByClassName('content');
-
-                    var x = 0
-
-                    while (x != buttons.length-1) {
-                        if (buttons[x].outerHTML == event.target.outerHTML) {
-                            break;
-                        }
-                        x++;
-                    }
+                    var content = parentDiv.querySelector('.content');
 
                     event.target.style.display = 'none';
-                    buttons[x].style.display = 'none';
-                    buttons[x+1].style.display = 'block';
+                    content.style.display = 'block';
                 }
             }, hide: function(event) {
                 if (event) {
-                    var buttons = document.getElementsByClassName('button');
+                    var parentDiv = event.target.parentNode.parentNode.parentNode.parentNode;
 
-                    var content = document.getElementsByClassName('content');
+                    var content = parentDiv.querySelector('.content');
+                    var show = parentDiv.querySelector('#show');
 
-                    var x = 0
-
-                    while (x != buttons.length-1) {
-                        if (buttons[x].outerHTML == event.target.outerHTML) {
-                            break;
-                        }
-                        x++;
-                    }
-
-                    event.target.style.display = 'none';
-                    buttons[x].style.display = 'none';
-                    buttons[x-1].style.display = 'block';
+                    show.style.display = 'inline-block';
+                    content.style.display = 'none';
                 }
+            }, getlink: function() {
+                let self = this;
+                return 'url('+self.headerlink+')';
             }
         }
     }

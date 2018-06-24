@@ -12,7 +12,6 @@ body {
 .articlehead {
     display: block;
     height: 400px;
-    background: url(https://www.iupdateos.com/wp-content/uploads/2016/10/newMBPwallDaki3.jpg);
     clip-path: polygon(0 12px, 100% 0, 100% 97%, 0 100%);
     animation:fadeSlideU 1s;   
 }
@@ -93,9 +92,8 @@ body {
     height: 30vh;
 }
 
-.bodybuttoncontainer {
+#hide {
     float: left;
-    margin-top: 1%;
 }
 
 .bodyimages {
