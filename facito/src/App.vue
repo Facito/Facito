@@ -1,6 +1,7 @@
 <template>
     <div id="app">
-        <Article title="Welcome to Your Vue.js App" bodytext="Vue.js is pretty neat."/>
+        <Article title="Eyecatching Headline" bodytext="Pretty neat text." imagelink="http://media.idownloadblog.com/wp-content/uploads/2016/10/MacBook-Pro-Event-Wallpaper-ari-weinkle-Spiral_1A.jpg"/>
+        <Article title="Eyecatching Headline" bodytext="Pretty neat text." imagelink="http://media.idownloadblog.com/wp-content/uploads/2016/10/MacBook-Pro-Event-Wallpaper-ari-weinkle-Spiral_1A.jpg"/>
     </div>
 </template>
 
@@ -21,6 +22,5 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
     }
 </style>

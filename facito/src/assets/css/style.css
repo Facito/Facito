@@ -75,7 +75,7 @@ body {
     text-align: center;
     color: rgb(0, 0, 0);
     font-family: Helvetica CE Bold, sans-serif;
-    font-size: 2.5em;
+    font-size: 1.75em;
     margin-top: 25px;
     margin-bottom: 15px;
     animation: fadein 2s;  
@@ -84,21 +84,26 @@ body {
 .articlebody {
     width: 100%;
     display: block;
-    height: 1px;
 }
 
 .bodyimagecontainer {
     padding-left: 15px;
     padding-right: 15px;
     animation: fadein 2s;
+    height: 30vh;
+}
+
+.bodybuttoncontainer {
+    float: left;
+    margin-top: 1%;
 }
 
 .bodyimages {
+    object-fit: cover;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
     display: block;
-    height: 320px;
-    background: grey;
-    clip-path: polygon(0 14px, 100% 0, 100% 95%, 0 100%);
 }
 
 .bodytextcontainer {
@@ -109,6 +114,10 @@ body {
     font-family: open sans;
     font-weight: lighter;
     animation: fadein 1s;
+}
+
+.buttonarticlecontainer {
+    margin-bottom: -10000%;
 }
 
 .buttonstyle {
