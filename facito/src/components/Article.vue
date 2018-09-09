@@ -3,7 +3,7 @@
         <div class="articlehead" :style="{'background-image': getlink()}">
             <h1 class="header">{{title}}</h1>
             <div class="buttoncontainer">
-                <button id="show" value="Show" class="button" v-on:click="show">Show</button>
+                <button id="show" value="Show" class="button" v-on:click="show">Read More</button>
             </div>
         </div>
         <div class="content">
