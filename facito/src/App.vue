@@ -1,7 +1,7 @@
-<template>
+ <template>
     <div id="app">
-        <Article title="Eyecatching Headline" bodytext="Pretty neat text." headerlink="https://www.iupdateos.com/wp-content/uploads/2016/10/newMBPwallDaki3.jpg" imagelink="http://media.idownloadblog.com/wp-content/uploads/2016/10/MacBook-Pro-Event-Wallpaper-ari-weinkle-Spiral_1A.jpg" id="article"/>
-        <Article title="Eyecatching Headline" bodytext="Pretty neat text." headerlink="http://media.idownloadblog.com/wp-content/uploads/2016/10/MacBook-Pro-Event-Wallpaper-ari-weinkle-Spiral_1A.jpg" imagelink="https://hdqwalls.com/download/abstract-artistic-blue-nn-2880x1800.jpg" id="article"/>
+        <Article title="This a sample text and image." bodytext="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut vehicula nulla. Duis blandit mollis mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec a risus et justo eleifend imperdiet. Praesent orci eros, auctor a elit eget, tristique ultrices diam. Vestibulum id ipsum imperdiet, suscipit eros at, vehicula urna. Nulla sed consequat leo. Aenean massa erat, porta eget faucibus vel, consequat sit amet leo. Morbi sollicitudin ipsum non arcu vulputate semper. In consequat bibendum eros aliquet pharetra. Phasellus in commodo nisl." headerlink="https://vonnscottbair.files.wordpress.com/2013/02/grey-study-0044.jpg" imagelink="https://vonnscottbair.files.wordpress.com/2013/02/grey-study-0044.jpg" id="article"/>
+        <Article title="This a sample text and image." bodytext="Pretty neat text." headerlink="https://d18nh7ureywlth.cloudfront.net/wp-content/uploads/9242-gull-grey.jpg" imagelink="https://d18nh7ureywlth.cloudfront.net/wp-content/uploads/9242-gull-grey.jpg" id="article"/>
     </div>
 </template>
 
