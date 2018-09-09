@@ -4,7 +4,7 @@ Vue.js implementation of Facito.
 
 ## Usage
 
-To run Facito, clone the Facito repo, and run 
+To run Facito, clone the Facito repo, and run
 
 ```bash
 cd facito
