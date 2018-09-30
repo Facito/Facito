@@ -34,6 +34,12 @@ contract Facito {
         string _title
     );
 
+    event ArticleError (
+        string _message,
+        address sender,
+        bytes32 _ID
+    );
+
     struct Article {
         string Title;
         bytes32 ID;
@@ -97,6 +103,12 @@ contract Facito {
     }
 
     function readArticle(bytes32 _id) public returns (bool success) {
+        if (articles[_id].UnspentOutputs[msg.sender] == 1) {
+            emit ArticleError("Article already read", msg.sender, _id);
+        } else if (articles[_id].Author == msg.sender) {
+            emit ArticleError("Author cannot read own article", msg.sender, _id);
+        }
+
         require(articles[_id].UnspentOutputs[msg.sender] != 1, "Article already read"); // Check article hasn't already been read
         require(articles[_id].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
 
@@ -108,53 +120,5 @@ contract Facito {
         transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
 
         return true; // Return success
-    }
-
-    function hexStrToBytes(string hex_str) public pure returns (bytes) {
-        //Check hex string is valid
-        if (bytes(hex_str)[0]!='0' ||
-            bytes(hex_str)[1]!='x' ||
-            bytes(hex_str).length%2!=0 ||
-            bytes(hex_str).length < 4) {
-                revert();
-        }
-
-        bytes memory bytes_array = new bytes((bytes(hex_str).length-2)/2);
-
-        for (uint i=2;i<bytes(hex_str).length;i+=2) {
-            uint tetrad1=16;
-            uint tetrad2=16;
-
-            //left digit
-            if (uint(bytes(hex_str)[i])>=48 &&uint(bytes(hex_str)[i])<=57)
-                tetrad1=uint(bytes(hex_str)[i])-48;
-
-            //right digit
-            if (uint(bytes(hex_str)[i+1])>=48 &&uint(bytes(hex_str)[i+1])<=57)
-                tetrad2=uint(bytes(hex_str)[i+1])-48;
-
-            //left A->F
-            if (uint(bytes(hex_str)[i])>=65 &&uint(bytes(hex_str)[i])<=70)
-                tetrad1=uint(bytes(hex_str)[i])-65+10;
-
-            //right A->F
-            if (uint(bytes(hex_str)[i+1])>=65 &&uint(bytes(hex_str)[i+1])<=70)
-                tetrad2=uint(bytes(hex_str)[i+1])-65+10;
-
-            //left a->f
-            if (uint(bytes(hex_str)[i])>=97 &&uint(bytes(hex_str)[i])<=102)
-                tetrad1=uint(bytes(hex_str)[i])-97+10;
-
-            //right a->f
-            if (uint(bytes(hex_str)[i+1])>=97 &&uint(bytes(hex_str)[i+1])<=102)
-                tetrad2=uint(bytes(hex_str)[i+1])-97+10;
-
-            //Check all symbols are allowed
-            if (tetrad1==16 || tetrad2==16)
-                revert();
-
-            bytes_array[i/2-1]=byte(16*tetrad1+tetrad2);
-        }
-        return bytes_array;
     }
 }
