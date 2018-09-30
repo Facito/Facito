@@ -4,5 +4,8 @@
     },
     "depTwo": {
         "address": "0x428fe3935f5cccfcd06ff5e0006377e221bd2d18"
+    },
+    "depThree": {
+        "address": "0x7167b5ebf71c5316e1cb3543dd93009d30ac9ab0"
     }
 }
