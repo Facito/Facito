@@ -97,7 +97,7 @@ contract Facito {
     }
 
     function readArticle(bytes32 _id) public returns (bool success) {
-        require(articles[_id].UnspentOutputs[msg.sender] == 0, "Article already read"); // Check article hasn't already been read
+        require(articles[_id].UnspentOutputs[msg.sender] != 1, "Article already read"); // Check article hasn't already been read
         require(articles[_id].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
 
         emit ReadArticle(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit read article
