@@ -83,6 +83,8 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
+        transfer(msg.sender, (balanceOf[this]/totalSupply)*10); // Transfer coins
+
         return true; // Return success
     }
 }
