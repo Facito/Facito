@@ -2,12 +2,12 @@ pragma solidity ^0.4.24; // Set compiler version
 
 // Token contract
 contract Facito {
-    string public name = "Facito"; // Name
-    string public symbol = "FAC"; // Symbol
+    string public constant name = "Facito"; // Name
+    string public constant symbol = "FAC"; // Symbol
     uint8 public constant decimals = 18; // Set precision points
     uint256 public totalSupply; // Store total supply
 
-    mapping(bytes32 => Article) public articles; // Store articles
+    mapping(string => Article) public articles; // Store articles
 
     event Transfer (
         address indexed _from,
@@ -22,13 +22,13 @@ contract Facito {
     );
 
     event NewArticle (
-        bytes32 _ID,
+        string _ID,
         address _author,
         string _title
     );
 
     event ReadArticle (
-        bytes32 _ID,
+        string _ID,
         address _author,
         address _reader,
         string _title
@@ -36,7 +36,7 @@ contract Facito {
 
     struct Article {
         string Title;
-        bytes32 ID;
+        string ID;
         string Content;
         string HeaderSource;
         address Author;
@@ -85,18 +85,18 @@ contract Facito {
     }
 
     function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
-        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender)); // Hash ID
+        string memory _id = bytes32ToString(keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender))); // Hash ID
 
         emit NewArticle(_id, msg.sender, _title); // Emit new article
 
         Article memory article = Article(_title, _id, _content, _headerSource, msg.sender); // Initialize article
 
-        articles[keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender))] = article; // Push new article
+        articles[bytes32ToString(keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender)))] = article; // Push new article
 
         return true; // Return success
     }
 
-    function readArticle(bytes32 _id) public returns (bool success) {
+    function readArticle(string _id) public returns (bool success) {
         require(articles[_id].UnspentOutputs[msg.sender] == 0, "Article already read"); // Check article hasn't already been read
         require(articles[_id].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
 
@@ -108,5 +108,27 @@ contract Facito {
         transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
 
         return true; // Return success
+    }
+
+    function bytes32ToString(bytes32 x) internal pure returns (string) {
+        bytes memory bytesString = new bytes(32);
+
+        uint charCount = 0;
+
+        for (uint j = 0; j < 32; j++) {
+            byte char = byte(bytes32(uint(x) * 2 ** (8 * j)));
+            if (char != 0) {
+                bytesString[charCount] = char;
+                charCount++;
+            }
+        }
+
+        bytes memory bytesStringTrimmed = new bytes(charCount);
+        
+        for (j = 0; j < charCount; j++) {
+            bytesStringTrimmed[j] = bytesString[j];
+        }
+
+        return string(bytesStringTrimmed);
     }
 }
