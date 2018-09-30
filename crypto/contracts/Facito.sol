@@ -91,7 +91,7 @@ contract Facito {
 
         Article memory article = Article(_title, _id, _content, _headerSource, msg.sender); // Initialize article
 
-        articles[keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender))] = article; // Push new article
+        articles[_id] = article; // Push new article
 
         return true; // Return success
     }
