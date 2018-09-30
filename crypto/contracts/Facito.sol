@@ -85,7 +85,7 @@ contract Facito {
     }
 
     function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
-        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender)); // Hash ID
+        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender, block.timestamp)); // Hash ID
 
         emit NewArticle(_id, msg.sender, _title); // Emit new article
 
