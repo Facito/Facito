@@ -6,6 +6,8 @@ contract Facito {
     string public symbol = "FAC"; // Symbol
     uint256 public totalSupply; // Store total supply
 
+    mapping(bytes32 => Article) public articles; // Store articles
+
     event Transfer (
         address indexed _from,
         address indexed _to,
@@ -17,6 +19,15 @@ contract Facito {
         address indexed _spender,
         uint256 _value
     );
+
+    struct Article {
+        string Title;
+        bytes32 ID;
+        string Content;
+        string HeaderSource;
+        address Author;
+        mapping(address => uint) UnspentOutputs;
+    }
 
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
@@ -55,6 +66,22 @@ contract Facito {
         allowance[_from][msg.sender] -= _value; // Remove allowance
 
         emit Transfer(_from, _to, _value); // Emit transfer event
+
+        return true; // Return success
+    }
+
+    function newArticle(string _title, string _content, string _headerSource, address _author) public returns (bool success) {
+        Article memory article = Article(_title, keccak256(abi.encodePacked(_title, _content, _headerSource, _author)), _content, _headerSource, _author); // Initialize article
+
+        articles[keccak256(abi.encodePacked(_title, _content, _headerSource, _author))] = article; // Push new article
+
+        return true; // Return success
+    }
+
+    function readArticle(bytes32 _id) public returns (bool success) {
+        require(articles[_id].UnspentOutputs[msg.sender] == 0, "Article already read"); // Check article hasn't already been read
+
+        articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
         return true; // Return success
     }
