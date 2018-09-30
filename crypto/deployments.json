@@ -10,5 +10,8 @@
     },
     "depFour": {
         "address": "0x7bdb24272b61a2f3b4cd8281be60eb098869d99e"
+    },
+    "depFive" : {
+        "address": "0xead60270b866f75e73d8ac37730e27fa05854515"
     }
 }
