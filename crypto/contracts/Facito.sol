@@ -38,7 +38,7 @@ contract Facito {
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
-        require(balanceOf[msg.sender] >= _value); // Check for invalid balance
+        require(balanceOf[msg.sender] >= _value, "Insufficient balance"); // Check for invalid balance
 
         balanceOf[msg.sender] -= _value; // Set sender balance
         balanceOf[_to] += _value; // Set recipient balance
@@ -57,8 +57,8 @@ contract Facito {
     }
 
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-        require(_value <= balanceOf[_from]); // Check allowance is valid
-        require(_value <= allowance[_from][msg.sender]); // Check allowance is valid
+        require(_value <= balanceOf[_from], "Insufficient balance"); // Check allowance is valid
+        require(_value <= allowance[_from][msg.sender], "Insufficient balance"); // Check allowance is valid
 
         balanceOf[_from] -= _value; // Remove from sender
         balanceOf[_to] += _value; // Add to destination
@@ -71,7 +71,9 @@ contract Facito {
     }
 
     function newArticle(string _title, string _content, string _headerSource, address _author) public returns (bool success) {
-        Article memory article = Article(_title, keccak256(abi.encodePacked(_title, _content, _headerSource, _author)), _content, _headerSource, _author); // Initialize article
+        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, _author)); // Hash ID
+        
+        Article memory article = Article(_title, _id, _content, _headerSource, _author); // Initialize article
 
         articles[keccak256(abi.encodePacked(_title, _content, _headerSource, _author))] = article; // Push new article
 
@@ -83,7 +85,8 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        transfer(msg.sender, (balanceOf[this]/totalSupply)*10); // Transfer coins
+        transfer(msg.sender, (balanceOf[this]/totalSupply)*2); // Transfer coins to reader
+        transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
 
         return true; // Return success
     }
