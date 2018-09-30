@@ -19,5 +19,8 @@
     },
     "depSeven": {
         "address": "0x3fa71d98c57cc40989307e564d891970b978f294"
+    },
+    "depEight": {
+        "address": "0x631d5690509705e7b4b2c2494a26378320b50b0a"
     }
 }
