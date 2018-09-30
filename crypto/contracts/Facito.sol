@@ -20,6 +20,19 @@ contract Facito {
         uint256 _value
     );
 
+    event NewArticle (
+        bytes32 _ID,
+        address _author,
+        string _title
+    );
+
+    event ReadArticle (
+        bytes32 _ID,
+        address _author,
+        address _reader,
+        string _title
+    );
+
     struct Article {
         string Title;
         bytes32 ID;
@@ -73,6 +86,8 @@ contract Facito {
     function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
         bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender)); // Hash ID
 
+        emit NewArticle(_id, msg.sender, _title); // Emit new article
+
         Article memory article = Article(_title, _id, _content, _headerSource, msg.sender); // Initialize article
 
         articles[keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender))] = article; // Push new article
@@ -82,6 +97,9 @@ contract Facito {
 
     function readArticle(bytes32 _id) public returns (bool success) {
         require(articles[_id].UnspentOutputs[msg.sender] == 0, "Article already read"); // Check article hasn't already been read
+        require(articles[_id].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
+
+        emit ReadArticle(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit read article
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
