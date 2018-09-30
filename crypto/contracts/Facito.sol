@@ -70,12 +70,12 @@ contract Facito {
         return true; // Return success
     }
 
-    function newArticle(string _title, string _content, string _headerSource, address _author) public returns (bool success) {
-        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, _author)); // Hash ID
-        
-        Article memory article = Article(_title, _id, _content, _headerSource, _author); // Initialize article
+    function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
+        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender)); // Hash ID
 
-        articles[keccak256(abi.encodePacked(_title, _content, _headerSource, _author))] = article; // Push new article
+        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender); // Initialize article
+
+        articles[keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender))] = article; // Push new article
 
         return true; // Return success
     }
