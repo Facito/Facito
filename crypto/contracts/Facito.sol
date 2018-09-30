@@ -96,31 +96,17 @@ contract Facito {
         return true; // Return success
     }
 
-    function readArticle(string _id) public returns (bool success) {
-        bytes32 _byteID = stringToBytes32(_id);
+    function readArticle(bytes32 _id) public returns (bool success) {
+        require(articles[_id].UnspentOutputs[msg.sender] == 0, "Article already read"); // Check article hasn't already been read
+        require(articles[_id].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
 
-        require(articles[_byteID].UnspentOutputs[msg.sender] == 0, "Article already read"); // Check article hasn't already been read
-        require(articles[_byteID].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
+        emit ReadArticle(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit read article
 
-        emit ReadArticle(_byteID, articles[_byteID].Author, msg.sender, articles[_byteID].Title); // Emit read article
-
-        articles[_byteID].UnspentOutputs[msg.sender] = 1; // Set spent
+        articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
         transfer(msg.sender, (balanceOf[this]/totalSupply)*2); // Transfer coins to reader
-        transfer(articles[_byteID].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
+        transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
 
         return true; // Return success
-    }
-
-    function stringToBytes32(string memory source) internal pure returns (bytes32 result) {
-        bytes memory tempEmptyStringTest = bytes(source);
-
-        if (tempEmptyStringTest.length == 0) {
-            return 0x0;
-        }
-
-        assembly {
-            result := mload(add(source, 32))
-        }
     }
 }
