@@ -44,4 +44,18 @@ contract Facito {
 
         return true; // Return success
     }
+
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(_value <= balanceOf[_from]); // Check allowance is valid
+        require(_value <= allowance[_from][msg.sender]); // Check allowance is valid
+
+        balanceOf[_from] -= _value; // Remove from sender
+        balanceOf[_to] += _value; // Add to destination
+
+        allowance[_from][msg.sender] -= _value; // Remove allowance
+
+        emit Transfer(_from, _to, _value); // Emit transfer event
+
+        return true; // Return success
+    }
 }
