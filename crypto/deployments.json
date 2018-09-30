@@ -1,8 +1,8 @@
 {
     "one": {
-        "contractAddress": ""
+        "address": "0x57649ea27d4cf7a06729866d3e765f4814a0e783"
     },
     "two": {
-        "contractAddress": ""
+        "address": ""
     }
 }
