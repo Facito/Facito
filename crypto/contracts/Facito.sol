@@ -4,6 +4,7 @@ pragma solidity ^0.4.24; // Set compiler version
 contract Facito {
     string public name = "Facito"; // Name
     string public symbol = "FAC"; // Symbol
+    uint8 public constant decimals = 18; // Set precision points
     uint256 public totalSupply; // Store total supply
 
     mapping(bytes32 => Article) public articles; // Store articles
