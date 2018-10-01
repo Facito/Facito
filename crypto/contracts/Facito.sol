@@ -48,7 +48,28 @@ contract Facito {
         address Author;
         uint256 BlockNumber;
         uint256 Views;
-        mapping(address => uint) UnspentOutputs;
+
+        uint256 Upvotes;
+        mapping(address => uint) Upvoters; // 0: Not upvoted, 1: upvoted
+
+        uint256 Downvotes;
+        mapping(address => uint) Downvoters; // 0: Not downvoted, 1: downvoted
+
+        mapping(address => uint) UnspentOutputs; // 0: unspent, 1: spent
+    }
+
+    struct Comment {
+        bytes32 ID;
+        string Content;
+        address Author;
+        uint256 BlockNumber;
+    }
+
+    struct Thread {
+        bytes32 ID;
+        Comment[] Comments;
+        address Author;
+        uint256 BlockNumber;
     }
 
     mapping(address => uint256) public balanceOf;
@@ -97,7 +118,7 @@ contract Facito {
 
         emit NewArticle(_id, msg.sender, _title); // Emit new article
 
-        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender, block.number, 0); // Initialize article
+        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender, block.number, 0, 0, 0); // Initialize article
 
         articles[_id] = article; // Push new article
 
@@ -126,3 +147,12 @@ contract Facito {
         return true; // Return success
     }
 }
+
+/*
+TODO:
+    - upvotes
+    - downvotes
+    - comments
+    - threads
+    - comment upvotes/downvotes
+*/
