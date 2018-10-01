@@ -28,5 +28,8 @@
     },
     "depTen": {
         "address": "0x1a26b981cec6c3766965caa849f7ba3aeabcd64f"
+    },
+    "depEleven": {
+        "address": "0x8caeff2707d83127a2c9c2871039504750a8dc02"
     }
 }

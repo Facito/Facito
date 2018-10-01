@@ -108,9 +108,9 @@ contract Facito {
         emit ReadArticle(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit read article
 
         if (articles[_id].UnspentOutputs[msg.sender] == 1) {
-            emit ArticleError("Article already read", msg.sender, _id);
+            emit ArticleError("Article already read", msg.sender, _id); // Emit error
         } else if (articles[_id].Author == msg.sender) {
-            emit ArticleError("Author cannot read own article", msg.sender, _id);
+            emit ArticleError("Author cannot read own article", msg.sender, _id); // Emit error
         }
 
         require(articles[_id].UnspentOutputs[msg.sender] != 1, "Article already read"); // Check article hasn't already been read
