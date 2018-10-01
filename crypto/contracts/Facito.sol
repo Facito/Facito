@@ -46,6 +46,7 @@ contract Facito {
         string Content;
         string HeaderSource;
         address Author;
+        uint256 timestamp;
         mapping(address => uint) UnspentOutputs;
     }
 
@@ -95,7 +96,7 @@ contract Facito {
 
         emit NewArticle(_id, msg.sender, _title); // Emit new article
 
-        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender); // Initialize article
+        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender, block.timestamp); // Initialize article
 
         articles[_id] = article; // Push new article
 
@@ -104,7 +105,7 @@ contract Facito {
 
     function readArticle(bytes32 _id) public returns (bool success) {
         emit ReadArticle(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit read article
-        
+
         if (articles[_id].UnspentOutputs[msg.sender] == 1) {
             emit ArticleError("Article already read", msg.sender, _id);
         } else if (articles[_id].Author == msg.sender) {
@@ -116,7 +117,7 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        transfer(msg.sender, (balanceOf[this]/totalSupply)*2); // Transfer coins to reader
+        transfer(msg.sender, (balanceOf[this]/totalSupply)*2); // Transfer coins to reader FAILS HERE
         transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
 
         return true; // Return success
