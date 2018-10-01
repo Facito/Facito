@@ -46,7 +46,8 @@ contract Facito {
         string Content;
         string HeaderSource;
         address Author;
-        uint256 timestamp;
+        uint256 BlockNumber;
+        uint256 Views;
         mapping(address => uint) UnspentOutputs;
     }
 
@@ -92,11 +93,11 @@ contract Facito {
     }
 
     function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
-        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender, block.timestamp)); // Hash ID
+        bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender, block.number)); // Hash ID
 
         emit NewArticle(_id, msg.sender, _title); // Emit new article
 
-        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender, block.timestamp); // Initialize article
+        Article memory article = Article(_title, _id, _content, _headerSource, msg.sender, block.number, 0); // Initialize article
 
         articles[_id] = article; // Push new article
 
@@ -115,10 +116,12 @@ contract Facito {
         require(articles[_id].UnspentOutputs[msg.sender] != 1, "Article already read"); // Check article hasn't already been read
         require(articles[_id].Author != msg.sender, "Author cannot read own article"); // Check author isn't reading own article
 
+        articles[_id].Views++; // Increment view count
+
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        transfer(msg.sender, (balanceOf[this]/totalSupply)*2); // Transfer coins to reader FAILS HERE
-        transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10); // Transfer coins to author
+        require(this.transfer(msg.sender, (balanceOf[this]/totalSupply)*2), "Transaction failed"); // Transfer coins to reader
+        require(this.transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10), "Transaction failed"); // Transfer coins to author
 
         return true; // Return success
     }
