@@ -100,6 +100,8 @@ contract Facito {
     mapping(address => mapping(address => uint256)) public allowance;
 
     constructor(uint256 _initialSupply) public {
+        _initialSupply = _initialSupply*(10^18); // Append decimal points
+
         balanceOf[this] = _initialSupply; // Set contract balance
         totalSupply = _initialSupply; // Set total supply
     }
