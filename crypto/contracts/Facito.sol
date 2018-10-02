@@ -196,9 +196,8 @@ contract Facito {
 
 /*
 TODO:
-    - upvotes
-    - downvotes
+    - upvotes [comments]
+    - downvotes [comments]
     - comments
     - threads
-    - comment upvotes/downvotes
 */
