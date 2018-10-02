@@ -141,6 +141,8 @@ contract Facito {
 
     // END ERC20 IMPLEMENTATION
 
+    /* BEGIN BASIC ARTICLE METHODS */
+
     function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
         bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender, block.number)); // Hash ID
 
@@ -174,6 +176,22 @@ contract Facito {
 
         return true; // Return success
     }
+
+    /* END BASIC ARTICLE METHODS */
+
+    /* BEGIN BASIC COMMENT METHODS */
+
+    function newComment(bytes32 _postID, bytes32 _threadID, string _content) public returns (bool success) {
+        bytes32 _id = keccak256(abi.encodePacked(_postID, _threadID, _content, msg.sender, block.number)); // Hash ID
+
+        Comment memory comment = Comment(_id, _content, msg.sender, block.number, 0, 0); // Initialize comment
+
+        articles[_postID].Threads[_threadID].Comments[_id] = comment; // Add comment
+
+        return true;
+    }
+
+    /* END BASIC COMMENT METHODS */
 
     /* POST UPVOTE/DOWNVOTE METHODs */
 
