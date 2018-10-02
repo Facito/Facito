@@ -34,6 +34,20 @@ contract Facito {
         string _title
     );
 
+    event UpvotedPost (
+        bytes32 _ID, 
+        address _author,
+        address _upvoter,
+        string _content
+    );
+
+    event DownvotedPost (
+        bytes32 _ID, 
+        address _author,
+        address _downvoter,
+        string _content
+    );
+
     event ArticleError (
         string _message,
         address sender,
@@ -145,6 +159,38 @@ contract Facito {
         require(this.transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10), "Transaction failed"); // Transfer coins to author
 
         return true; // Return success
+    }
+
+    function upvotePost(bytes32 _id) public {
+        if (articles[_id].Upvoters[msg.sender] == 1) { // Check already upvoted
+            articles[_id].Upvoters[msg.sender] == 0; // Remove upvote
+
+            articles[_id].Upvotes--; // Decrement
+
+            emit DownvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
+        } else if (articles[_id].Upvoters[msg.sender] == 0) { // Check not already upvoted
+            articles[_id].Upvoters[msg.sender] == 1; // Add upvote
+
+            articles[_id].Upvotes++; // Increment
+
+            emit UpvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
+        }
+    }
+
+    function downvotePost(bytes32 _id) public {
+        if (articles[_id].Downvoters[msg.sender] == 1) { // Check already downvoted
+            articles[_id].Downvoters[msg.sender] == 0; // Remove downvote
+
+            articles[_id].Downvotes--; // Decrement
+
+            emit UpvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
+        } else if (articles[_id].Downvoters[msg.sender] == 0) { // Check not already downvoted
+            articles[_id].Downvoters[msg.sender] == 1; // Add downvote
+
+            articles[_id].Downvotes++; // Increment
+
+            emit DownvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
+        }
     }
 }
 
