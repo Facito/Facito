@@ -100,7 +100,7 @@ contract Facito {
     mapping(address => mapping(address => uint256)) public allowance;
 
     constructor(uint256 _initialSupply) public {
-        _initialSupply = _initialSupply*(10^18); // Append decimal points
+        _initialSupply = _initialSupply*(10^decimals); // Append decimal points
 
         balanceOf[this] = _initialSupply; // Set contract balance
         totalSupply = _initialSupply; // Set total supply
@@ -112,7 +112,7 @@ contract Facito {
         balanceOf[msg.sender] -= _value; // Set sender balance
         balanceOf[_to] += _value; // Set recipient balance
 
-        emit Transfer(msg.sender, _to, _value); // Emit transfer event
+        emit Transfer(msg.sender, _to, _value*(10^decimals)); // Emit transfer event
 
         return true; // Return success
     }
