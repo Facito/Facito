@@ -11,7 +11,7 @@ module.exports = {
         return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/0db77166d63046319c02a3b5f9517b99");
       },
       network_id: 3,
-      gas: 2900000
+      gas: 6000000
     }
   }
 };
