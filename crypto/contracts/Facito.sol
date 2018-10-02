@@ -168,7 +168,7 @@ contract Facito {
             articles[_id].Upvotes--; // Decrement
 
             emit DownvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
-        } else if (articles[_id].Upvoters[msg.sender] == 0) { // Check not already upvoted
+        } else if (articles[_id].Upvoters[msg.sender] != 1) { // Check not already upvoted
             articles[_id].Upvoters[msg.sender] == 1; // Add upvote
 
             articles[_id].Upvotes++; // Increment
@@ -184,7 +184,7 @@ contract Facito {
             articles[_id].Downvotes--; // Decrement
 
             emit UpvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
-        } else if (articles[_id].Downvoters[msg.sender] == 0) { // Check not already downvoted
+        } else if (articles[_id].Downvoters[msg.sender] != 1) { // Check not already downvoted
             articles[_id].Downvoters[msg.sender] == 1; // Add downvote
 
             articles[_id].Downvotes++; // Increment
