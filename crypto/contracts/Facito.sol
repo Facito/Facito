@@ -6,6 +6,7 @@ contract Facito {
     string public constant symbol = "FAC"; // Symbol
     uint8 public constant decimals = 18; // Set precision points
     uint256 public totalSupply; // Store total supply
+    uint256 public baseReward;
 
     mapping(bytes32 => Article) public articles; // Store articles
 
@@ -104,6 +105,7 @@ contract Facito {
 
         balanceOf[this] = _initialSupply; // Set contract balance
         totalSupply = _initialSupply; // Set total supply
+        baseReward = 1*(10^decimals); // Append decimals to base reward
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -112,7 +114,7 @@ contract Facito {
         balanceOf[msg.sender] -= _value; // Set sender balance
         balanceOf[_to] += _value; // Set recipient balance
 
-        emit Transfer(msg.sender, _to, _value*(10^decimals)); // Emit transfer event
+        emit Transfer(msg.sender, _to, _value); // Emit transfer event
 
         return true; // Return success
     }
@@ -171,8 +173,8 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        require(this.transfer(msg.sender, (balanceOf[this]/totalSupply)*2), "Transaction failed"); // Transfer coins to reader
-        require(this.transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*10), "Transaction failed"); // Transfer coins to author
+        require(this.transfer(msg.sender, (balanceOf[this]/totalSupply)*(2*baseReward)), "Transaction failed"); // Transfer coins to reader
+        require(this.transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*(10*baseReward)), "Transaction failed"); // Transfer coins
 
         return true; // Return success
     }
@@ -188,7 +190,7 @@ contract Facito {
 
         articles[_postID].Threads[_threadID].Comments[_id] = comment; // Add comment
 
-        return true;
+        return true; // Return success
     }
 
     /* END BASIC COMMENT METHODS */
