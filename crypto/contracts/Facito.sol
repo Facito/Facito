@@ -70,6 +70,8 @@ contract Facito {
         mapping(address => uint) Downvoters; // 0: Not downvoted, 1: downvoted
 
         mapping(address => uint) UnspentOutputs; // 0: unspent, 1: spent
+
+        mapping(bytes32 => Thread) Threads;
     }
 
     struct Comment {
@@ -77,11 +79,17 @@ contract Facito {
         string Content;
         address Author;
         uint256 BlockNumber;
+
+        uint256 Upvotes;
+        mapping(address => uint) Upvoters; // 0: Not upvoted, 1: upvoted
+
+        uint256 Downvotes;
+        mapping(address => uint) Downvoters; // 0: Not downvoted, 1: downvoted
     }
 
     struct Thread {
         bytes32 ID;
-        Comment[] Comments;
+        mapping(bytes32 => Comment) Comments;
         address Author;
         uint256 BlockNumber;
     }
@@ -127,6 +135,8 @@ contract Facito {
         return true; // Return success
     }
 
+    // END ERC20 IMPLEMENTATION
+
     function newArticle(string _title, string _content, string _headerSource) public returns (bool success) {
         bytes32 _id = keccak256(abi.encodePacked(_title, _content, _headerSource, msg.sender, block.number)); // Hash ID
 
@@ -161,6 +171,8 @@ contract Facito {
         return true; // Return success
     }
 
+    /* POST UPVOTE/DOWNVOTE METHODs */
+
     function upvotePost(bytes32 _id) public {
         if (articles[_id].Upvoters[msg.sender] == 1) { // Check already upvoted
             articles[_id].Upvoters[msg.sender] == 0; // Remove upvote
@@ -179,19 +191,57 @@ contract Facito {
 
     function downvotePost(bytes32 _id) public {
         if (articles[_id].Downvoters[msg.sender] == 1) { // Check already downvoted
-            articles[_id].Downvoters[msg.sender] == 0; // Remove downvote
+            articles[_id].Downvoters[msg.sender] = 0; // Remove downvote
 
             articles[_id].Downvotes--; // Decrement
 
             emit UpvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
         } else if (articles[_id].Downvoters[msg.sender] != 1) { // Check not already downvoted
-            articles[_id].Downvoters[msg.sender] == 1; // Add downvote
+            articles[_id].Downvoters[msg.sender] = 1; // Add downvote
 
             articles[_id].Downvotes++; // Increment
 
             emit DownvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
         }
     }
+
+    /* END POST UPVOTE/DOWNVOTE METHODS */
+
+    /* COMMENT UPVOTE/DOWNVOTE METHODS */
+
+    function upvoteComment(bytes32 _commentID, bytes32 _threadID, bytes32 _articleID) public {
+        if (articles[_articleID].Threads[_threadID].Comments[_commentID].Upvoters[msg.sender] == 1) { // Check already upvoted
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Upvoters[msg.sender] = 0; // Remove upvote
+
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Upvotes--; // Decrement
+
+            emit DownvotedPost(_commentID, articles[_articleID].Threads[_threadID].Comments[_commentID].Author, msg.sender, articles[_articleID].Threads[_threadID].Comments[_commentID].Content); // Emit event
+        } else if (articles[_articleID].Threads[_threadID].Comments[_commentID].Upvoters[msg.sender] != 1) { // Check not already upvoted
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Upvoters[msg.sender] = 1; // Add upvote
+
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Upvotes++; // Increment
+
+            emit UpvotedPost(_commentID, articles[_articleID].Threads[_threadID].Comments[_commentID].Author, msg.sender, articles[_articleID].Threads[_threadID].Comments[_commentID].Content); // Emit event
+        }
+    }
+
+    function downvoteComment(bytes32 _commentID, bytes32 _threadID, bytes32 _articleID) public {
+        if (articles[_articleID].Threads[_threadID].Comments[_commentID].Downvoters[msg.sender] == 1) { // Check already downvoted
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Downvoters[msg.sender] = 0; // Remove downvote
+
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Downvotes--; // Decrement
+
+            emit UpvotedPost(_commentID, articles[_articleID].Threads[_threadID].Comments[_commentID].Author, msg.sender, articles[_articleID].Threads[_threadID].Comments[_commentID].Content); // Emit event
+        } else if (articles[_articleID].Threads[_threadID].Comments[_commentID].Downvoters[msg.sender] != 1) { // Check not already downvoted
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Downvoters[msg.sender] = 1; // Add downvote
+
+            articles[_articleID].Threads[_threadID].Comments[_commentID].Downvotes++; // Increment
+
+            emit DownvotedPost(_commentID, articles[_articleID].Threads[_threadID].Comments[_commentID].Author, msg.sender, articles[_articleID].Threads[_threadID].Comments[_commentID].Content); // Emit event
+        }
+    }
+
+    /* END COMMENT UPVOTE/DOWNVOTE METHODS */
 }
 
 /*
