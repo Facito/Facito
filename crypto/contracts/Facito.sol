@@ -246,8 +246,6 @@ contract Facito {
 
 /*
 TODO:
-    - upvotes [comments]
-    - downvotes [comments]
-    - comments
-    - threads
+    - comment initializer
+    - thread initializer
 */
