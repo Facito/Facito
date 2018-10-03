@@ -186,7 +186,17 @@ contract Facito {
 
     /* BEGIN BASIC COMMENT METHODS */
 
-    function newComment(bytes32 _postID, bytes32 _threadID, string _content) public returns (bool success) {
+    function newComment(bytes32 _postID, string _content) public returns (bool success) {
+        bytes32 _id = keccak256(abi.encodePacked(_postID, _content, msg.sender, block.number)); // Hash ID
+
+        Comment memory comment = Comment(_id, _content, msg.sender, block.number, 0, 0); // Initialize comment
+
+        articles[_postID].Threads[_id].Comments[_id] = comment; // Add comment
+
+        return true; // Return success
+    }
+
+    function newThreadComment(bytes32 _postID, bytes32 _threadID, string _content) public returns (bool success) {
         bytes32 _id = keccak256(abi.encodePacked(_postID, _threadID, _content, msg.sender, block.number)); // Hash ID
 
         Comment memory comment = Comment(_id, _content, msg.sender, block.number, 0, 0); // Initialize comment
