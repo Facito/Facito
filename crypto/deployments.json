@@ -46,5 +46,8 @@
     },
     "depSixteen": {
         "address": "0x54f7562F9FF9E507db038e6Cf30a645f5385a3f0"
+    },
+    "depSeventeen": {
+        "address": "0x493a9ca6162a022734ab98da4bf495ee86d5b8e0"
     }
 }
