@@ -5,6 +5,7 @@ contract Facito {
     string public constant name = "Facito"; // Name
     string public constant symbol = "FAC"; // Symbol
     uint8 public constant decimals = 18; // Set precision points
+    uint256 public decimalUnits = 1000000000000000000;
     uint256 public totalSupply; // Store total supply
     uint256 public baseReward;
 
@@ -101,11 +102,11 @@ contract Facito {
     mapping(address => mapping(address => uint256)) public allowance;
 
     constructor(uint256 _initialSupply) public {
-        _initialSupply = _initialSupply*(10^decimals); // Append decimal points
+        _initialSupply = _initialSupply*decimalUnits; // Append decimal points
 
         balanceOf[this] = _initialSupply; // Set contract balance
         totalSupply = _initialSupply; // Set total supply
-        baseReward = 1*(10^decimals); // Append decimals to base reward
+        baseReward = decimalUnits; // Append decimals to base reward
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
