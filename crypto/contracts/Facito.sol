@@ -56,6 +56,12 @@ contract Facito {
         bytes32 _ID
     );
 
+    event FoundSpent (
+        bool spent,
+        address sender,
+        bytes32 _ID
+    );
+
     struct Article {
         string Title;
         bytes32 ID;
@@ -219,10 +225,14 @@ contract Facito {
             emit DownvotedPost(_id, articles[_id].Author, msg.sender, articles[_id].Title); // Emit event
         } else if (articles[_id].Upvoters[msg.sender] != 1) { // Check not already upvoted
             if (articles[_id].UnspentOutputs[msg.sender] != 1) { // Check not already spent
+                emit FoundSpent(false, msg.sender, _id);
+
                 uint256 reward = (balanceOf[this]/totalSupply)*baseReward;
 
                 require(this.transfer(msg.sender, reward*4), "Transaction failed"); // Transfer coins to reader
                 require(this.transfer(articles[_id].Author, reward*15), "Transaction failed"); // Transfer coins to author
+            } else {
+                emit FoundSpent(true, msg.sender, _id);
             }
 
             articles[_id].Upvoters[msg.sender] == 1; // Add upvote
@@ -262,10 +272,14 @@ contract Facito {
             emit DownvotedPost(_commentID, articles[_articleID].Threads[_threadID].Comments[_commentID].Author, msg.sender, articles[_articleID].Threads[_threadID].Comments[_commentID].Content); // Emit event
         } else if (articles[_articleID].Threads[_threadID].Comments[_commentID].Upvoters[msg.sender] != 1) { // Check not already upvoted
             if (articles[_articleID].Threads[_threadID].Comments[_commentID].UnspentOutputs[msg.sender] != 1) { // Check not already spent
+                emit FoundSpent(false, msg.sender, _commentID);
+
                 uint256 reward = (balanceOf[this]/totalSupply)*baseReward;
 
                 require(this.transfer(msg.sender, reward*1), "Transaction failed"); // Transfer coins to reader
                 require(this.transfer(articles[_articleID].Threads[_threadID].Comments[_commentID].Author, reward*5), "Transaction failed"); // Transfer coins to author
+            } else {
+                emit FoundSpent(false, msg.sender, _commentID);
             }
 
             articles[_articleID].Threads[_threadID].Comments[_commentID].Upvoters[msg.sender] = 1; // Add upvote
