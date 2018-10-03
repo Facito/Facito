@@ -175,7 +175,7 @@ contract Facito {
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
         require(this.transfer(msg.sender, (balanceOf[this]/totalSupply)*(2*baseReward)), "Transaction failed"); // Transfer coins to reader
-        require(this.transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*(10*baseReward)), "Transaction failed"); // Transfer coins
+        require(this.transfer(articles[_id].Author, (balanceOf[this]/totalSupply)*(8*baseReward)), "Transaction failed"); // Transfer coins
 
         return true; // Return success
     }
