@@ -1,7 +1,11 @@
 pragma solidity ^0.4.24; // Set compiler version
 
+import "./SafeMath.sol";
+
 // Token contract
 contract Facito {
+    using SafeMath for uint256;
+
     string public constant name = "Facito"; // Name
     string public constant symbol = "FAC"; // Symbol
     uint8 public constant decimals = 18; // Set precision points
@@ -180,10 +184,13 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        uint256 reward = (balanceOf[this]/totalSupply)*baseReward;
+        uint256 readerReward = uint256(2).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate reader reward
 
-        require(this.transfer(msg.sender, 2*reward), "Transaction failed"); // Transfer coins to reader
-        require(this.transfer(articles[_id].Author, 10*reward), "Transaction failed"); // Transfer coins to author
+        require(this.transfer(msg.sender, readerReward), "Transaction failed"); // Transfer coins to reader
+
+        uint256 authorReward = uint256(10).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate reader reward
+
+        require(this.transfer(articles[_id].Author, authorReward), "Transaction failed"); // Transfer coins to author
 
         return true; // Return success
     }
@@ -227,10 +234,13 @@ contract Facito {
             if (articles[_id].UnspentOutputs[msg.sender] != 1) { // Check not already spent
                 emit FoundSpent(false, msg.sender, _id);
 
-                uint256 reward = (balanceOf[this]/totalSupply)*baseReward;
+                uint256 readerReward = uint256(4).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate reader reward
 
-                require(this.transfer(msg.sender, reward*4), "Transaction failed"); // Transfer coins to reader
-                require(this.transfer(articles[_id].Author, reward*15), "Transaction failed"); // Transfer coins to author
+                require(this.transfer(msg.sender, readerReward), "Transaction failed"); // Transfer coins to reader
+
+                uint256 authorReward = uint256(15).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate author reward
+
+                require(this.transfer(articles[_id].Author, authorReward), "Transaction failed"); // Transfer coins to author
             } else {
                 emit FoundSpent(true, msg.sender, _id);
             }
@@ -274,10 +284,13 @@ contract Facito {
             if (articles[_articleID].Threads[_threadID].Comments[_commentID].UnspentOutputs[msg.sender] != 1) { // Check not already spent
                 emit FoundSpent(false, msg.sender, _commentID);
 
-                uint256 reward = (balanceOf[this]/totalSupply)*baseReward;
+                uint256 readerReward = uint256(1).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate author reward
 
-                require(this.transfer(msg.sender, reward*1), "Transaction failed"); // Transfer coins to reader
-                require(this.transfer(articles[_articleID].Threads[_threadID].Comments[_commentID].Author, reward*5), "Transaction failed"); // Transfer coins to author
+                require(this.transfer(msg.sender, readerReward), "Transaction failed"); // Transfer coins to reader
+
+                uint256 authorReward = uint256(5).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate author reward
+
+                require(this.transfer(articles[_articleID].Threads[_threadID].Comments[_commentID].Author, authorReward), "Transaction failed"); // Transfer coins to author
             } else {
                 emit FoundSpent(false, msg.sender, _commentID);
             }

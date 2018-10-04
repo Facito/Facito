@@ -61,5 +61,8 @@
     },
     "depTwentyOne": {
         "address": "0xa649776cb3e7a25bd2bfd30a24544a295058a5d1"
+    },
+    "depTwentyTwo": {
+        "address": "0x74ebc2bd3ddaf77c1cf43f7943e2084b2c6f2919"
     }
 }
