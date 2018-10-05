@@ -182,11 +182,11 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        uint256 reward = (uint256(2).mul(uint256(10^-2))).mul(((balanceOf[this].div(totalSupply))).mul(uint256(10^2))).mul(baseReward);
+        uint256 reward = uint256(0.02).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
         require(this.transfer(msg.sender, reward), "Transaction failed"); // Transfer coins to reader
 
-        reward = (uint256(10).mul(uint256(10^-2))).mul(((balanceOf[this].div(totalSupply)).mul(uint256(10^2)))).mul(baseReward);
+        reward = uint256(0.1).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
         require(this.transfer(articles[_id].Author, reward), "Transaction failed"); // Transfer coins to author
 
@@ -232,13 +232,13 @@ contract Facito {
             if (articles[_id].UnspentOutputs[msg.sender] != 1) { // Check not already spent
                 emit FoundSpent(false, msg.sender, _id);
 
-                uint256 readerReward = (uint256(4).mul(uint256(10^-2))).mul(((balanceOf[this].div(totalSupply)).mul(uint256(10^2)))).mul(baseReward); // Calculate reader reward
+                uint256 reward = uint256(0.04).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
-                require(this.transfer(msg.sender, readerReward), "Transaction failed"); // Transfer coins to reader
+                require(this.transfer(msg.sender, reward), "Transaction failed"); // Transfer coins to reader
 
-                uint256 authorReward = uint256(15).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate author reward
+                reward = uint256(0.15).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
-                require(this.transfer(articles[_id].Author, authorReward), "Transaction failed"); // Transfer coins to author
+                require(this.transfer(articles[_id].Author, reward), "Transaction failed"); // Transfer coins to author
             } else {
                 emit FoundSpent(true, msg.sender, _id);
             }
@@ -282,13 +282,13 @@ contract Facito {
             if (articles[_articleID].Threads[_threadID].Comments[_commentID].UnspentOutputs[msg.sender] != 1) { // Check not already spent
                 emit FoundSpent(false, msg.sender, _commentID);
 
-                uint256 readerReward = uint256(1).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate author reward
+                uint256 reward = uint256(0.01).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
-                require(this.transfer(msg.sender, readerReward), "Transaction failed"); // Transfer coins to reader
+                require(this.transfer(msg.sender, reward), "Transaction failed"); // Transfer coins to reader
 
-                uint256 authorReward = uint256(5).mul(balanceOf[this].div(totalSupply)).mul(baseReward); // Calculate author reward
+                reward = uint256(0.05).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
-                require(this.transfer(articles[_articleID].Threads[_threadID].Comments[_commentID].Author, authorReward), "Transaction failed"); // Transfer coins to author
+                require(this.transfer(articles[_articleID].Threads[_threadID].Comments[_commentID].Author, reward), "Transaction failed"); // Transfer coins to author
             } else {
                 emit FoundSpent(false, msg.sender, _commentID);
             }
