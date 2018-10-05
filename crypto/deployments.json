@@ -70,6 +70,9 @@
         },
         "depTwentyFour": {
             "address": "0x93edba7bb3147d5e7e648dc82fa0f12248324806"
+        },
+        "depTwentyFive": {
+            "address": "0x38dd11081f236faa61976f1f2ba682aa89e25d35"
         }
     },
     "safeMath": {

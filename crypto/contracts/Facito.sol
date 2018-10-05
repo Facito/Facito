@@ -182,11 +182,11 @@ contract Facito {
 
         articles[_id].UnspentOutputs[msg.sender] = 1; // Set spent
 
-        uint256 reward = uint256(0.02).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
+        uint256 reward = uint256(2).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
         require(this.transfer(msg.sender, reward), "Transaction failed"); // Transfer coins to reader
 
-        reward = uint256(0.1).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
+        reward = uint256(10).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
         require(this.transfer(articles[_id].Author, reward), "Transaction failed"); // Transfer coins to author
 
@@ -232,11 +232,11 @@ contract Facito {
             if (articles[_id].UnspentOutputs[msg.sender] != 1) { // Check not already spent
                 emit FoundSpent(false, msg.sender, _id);
 
-                uint256 reward = uint256(0.04).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
+                uint256 reward = uint256(4).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
                 require(this.transfer(msg.sender, reward), "Transaction failed"); // Transfer coins to reader
 
-                reward = uint256(0.15).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
+                reward = uint256(15).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
                 require(this.transfer(articles[_id].Author, reward), "Transaction failed"); // Transfer coins to author
             } else {
@@ -282,11 +282,11 @@ contract Facito {
             if (articles[_articleID].Threads[_threadID].Comments[_commentID].UnspentOutputs[msg.sender] != 1) { // Check not already spent
                 emit FoundSpent(false, msg.sender, _commentID);
 
-                uint256 reward = uint256(0.01).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
+                uint256 reward = uint256(1).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
                 require(this.transfer(msg.sender, reward), "Transaction failed"); // Transfer coins to reader
 
-                reward = uint256(0.05).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
+                reward = uint256(5).mul((balanceOf[this].div(totalSupply)).mul(uint256(100))).mul(baseReward);
 
                 require(this.transfer(articles[_articleID].Threads[_threadID].Comments[_commentID].Author, reward), "Transaction failed"); // Transfer coins to author
             } else {
