@@ -1,4 +1,5 @@
-{    "facitoToken": {
+{
+    "facitoToken": {
         "depOne": {
             "address": "0x57649ea27d4cf7a06729866d3e765f4814a0e783"
         },
@@ -11,7 +12,7 @@
         "depFour": {
             "address": "0x7bdb24272b61a2f3b4cd8281be60eb098869d99e"
         },
-        "depFive" : {
+        "depFive": {
             "address": "0xead60270b866f75e73d8ac37730e27fa05854515"
         },
         "depSix": {
@@ -35,7 +36,7 @@
         "depTwelve": {
             "address": "0x57725e067A8308DaE1c366e39F7D28298E61B5e2"
         },
-        "depThirteen" : {
+        "depThirteen": {
             "address": "0x90e7C6ca22d74fE7b20574CC9048706AD1588a2C"
         },
         "depFourteen": {
