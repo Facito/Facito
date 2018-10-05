@@ -67,6 +67,9 @@
         },
         "depTwentyThree": {
             "address": "0x15a58ce8be61e3f1fc26100bffc1f53b9a3f5df7"
+        },
+        "depTwentyFour": {
+            "address": "0x93edba7bb3147d5e7e648dc82fa0f12248324806"
         }
     },
     "safeMath": {
