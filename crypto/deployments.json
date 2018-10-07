@@ -1,0 +1,84 @@
+{
+    "facitoToken": {
+        "depOne": {
+            "address": "0x57649ea27d4cf7a06729866d3e765f4814a0e783"
+        },
+        "depTwo": {
+            "address": "0x428fe3935f5cccfcd06ff5e0006377e221bd2d18"
+        },
+        "depThree": {
+            "address": "0x7167b5ebf71c5316e1cb3543dd93009d30ac9ab0"
+        },
+        "depFour": {
+            "address": "0x7bdb24272b61a2f3b4cd8281be60eb098869d99e"
+        },
+        "depFive": {
+            "address": "0xead60270b866f75e73d8ac37730e27fa05854515"
+        },
+        "depSix": {
+            "address": "0x98e3f1b4d3de0d63f0c10381db7cd59378394739"
+        },
+        "depSeven": {
+            "address": "0x3fa71d98c57cc40989307e564d891970b978f294"
+        },
+        "depEight": {
+            "address": "0x631d5690509705e7b4b2c2494a26378320b50b0a"
+        },
+        "depNine": {
+            "address": "0xa97c7c4add2b96c2adbdb7b0effe86e23c0a5f60"
+        },
+        "depTen": {
+            "address": "0x1a26b981cec6c3766965caa849f7ba3aeabcd64f"
+        },
+        "depEleven": {
+            "address": "0x8caeff2707d83127a2c9c2871039504750a8dc02"
+        },
+        "depTwelve": {
+            "address": "0x57725e067A8308DaE1c366e39F7D28298E61B5e2"
+        },
+        "depThirteen": {
+            "address": "0x90e7C6ca22d74fE7b20574CC9048706AD1588a2C"
+        },
+        "depFourteen": {
+            "address": "0xe88c8e2aa6137b2161e00340430ab7c37f878427"
+        },
+        "depFifteen": {
+            "address": "0x03d6a71f441a8b4275cc842cdb7ba1acdb156bdd"
+        },
+        "depSixteen": {
+            "address": "0x54f7562F9FF9E507db038e6Cf30a645f5385a3f0"
+        },
+        "depSeventeen": {
+            "address": "0x493a9ca6162a022734ab98da4bf495ee86d5b8e0"
+        },
+        "depEighteen": {
+            "address": "0x1a45ca6bcddefadf28754c0e0a79dd9810cc40a0"
+        },
+        "depNineteen": {
+            "address": "0x829d1fbf40ec05411273dea1b5987664c9163a91"
+        },
+        "depTwenty": {
+            "address": "0x03e3df14ce0518995cef789b3a0b98791a462934"
+        },
+        "depTwentyOne": {
+            "address": "0xa649776cb3e7a25bd2bfd30a24544a295058a5d1"
+        },
+        "depTwentyTwo": {
+            "address": "0x74ebc2bd3ddaf77c1cf43f7943e2084b2c6f2919"
+        },
+        "depTwentyThree": {
+            "address": "0x15a58ce8be61e3f1fc26100bffc1f53b9a3f5df7"
+        },
+        "depTwentyFour": {
+            "address": "0x93edba7bb3147d5e7e648dc82fa0f12248324806"
+        },
+        "depTwentyFive": {
+            "address": "0x38dd11081f236faa61976f1f2ba682aa89e25d35"
+        }
+    },
+    "safeMath": {
+        "depOne": {
+            "address": "0x0cb38a9ac85ab819788a7561037efadd43fc5ba9"
+        }
+    }
+}

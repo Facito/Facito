@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://gitlab.com/Facito/Facito/issues"
   },
-  "homepage": "https://gitlab.com/Facito/Facito#README"
+  "homepage": "https://gitlab.com/Facito/Facito#README",
+  "dependencies": {
+    "scrypt": "^6.0.3",
+    "truffle": "^4.1.14",
+    "truffle-hdwallet-provider": "0.0.6",
+    "web3": "^1.0.0-beta.36"
+  }
 }

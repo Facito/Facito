@@ -1,0 +1,6 @@
+node_modules
+
+.vscode/
+
+FacitoWork.code-workspace
+*.code-workspace
